@@ -36,7 +36,7 @@ def main():
     try:
         with open(os.path.join(os.path.dirname(__file__), targets_file), 'rt') as fh:
             targets = json.load(fh)
-    except:
+    except Exception:
         log.exception(f'Failed to read targets file "{targets_file}"!')
         sys.exit(1)
 
@@ -48,7 +48,7 @@ def main():
     # Open database file
     try:
         db = lzma.open(os.path.join(os.path.dirname(__file__), db_file), 'rt')
-    except:
+    except Exception:
         log.error(f'Failed to amend database file "{db_file}".')
     else:
 
@@ -103,7 +103,7 @@ if __name__ == '__main__':
         log = logging.getLogger()
         log.addHandler(JournalHandler())
         log.setLevel(logging.WARNING)
-    except:
+    except Exception:
         sys.stderr.write('Failed to set up logging!')
         sys.exit(1)
 
