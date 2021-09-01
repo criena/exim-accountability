@@ -77,15 +77,18 @@ def main():
 
     # Sending emails
     for domain in reports.keys():
+        chronological_order = f'The below addresses have been used (in chronological order):\n\n'
+        chronological_order += '\n'.join(reports[domain])
+        alphabetical_order = f'The below addresses have been used (in alphabetical order):\n\n'
+        reports[domain].sort()
+        alphabetical_order += '\n'.join(reports[domain])
+
         msg = f'From: {email_from}\n'
         msg += f'To: <{targets[domain]}>\n'
         msg += f'Subject: Accountability report for {domain} ({len(reports[domain])} entries)\n'
-        msg += f'The below addresses have been used (in chronological order):\n\n'
-        msg += '\n'.join(reports[domain])
+        msg += alphabetical_order
         msg += '\n' * 3
-        msg += f'The below addresses have been used (in alphabetical order):\n\n'
-        reports[domain].sort()
-        msg += '\n'.join(reports[domain])
+        msg += chronological_order
 
         s = smtplib.SMTP('localhost')
         s.sendmail(email_from, targets[domain], msg)
