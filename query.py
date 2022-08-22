@@ -22,7 +22,7 @@ from systemd.journal import JournalHandler
 db_file = 'accountability.db'
 targets_file = 'accountability.conf'
 blacklist_file = 'accountability.blocklist'
-local_part_regex = re.compile('(.+)_([0-9]{8})')
+local_part_regex = re.compile('^([a-zA-Z0-9.-]+)_([0-9]{8})')
 
 
 ################################################################################
