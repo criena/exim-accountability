@@ -74,7 +74,7 @@ def main():
     print(f'REDIRECT {targets[domain]}')
 
     # Log the used address
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.now(datetime.UTC)
     try:
         with lzma.open(os.path.join(os.path.dirname(__file__), db_file), 'at') as db:
             db.write(f'[{now.strftime("%Y-%m-%d %H:%M:%S")}] {email_address}\n')
