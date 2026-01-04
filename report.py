@@ -23,7 +23,7 @@ from email.message import Message
 db_file = 'accountability.db'
 targets_file = 'accountability.conf'
 email_regex = re.compile('((.+)_([0-9]{8}))@(.+)')
-email_from = '"Criena Network E-Mail System" <admin@criena.net>'
+email_from = '"Criëna Mail" <admin@criena.net>'
 
 
 ################################################################################
